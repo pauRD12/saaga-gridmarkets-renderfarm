@@ -106,7 +106,9 @@ When running a render submission, multiple flags are available to control versio
 While the full API integration is restricted, you can find a few core components in the `code_snippets` directory that demonstrate the engineering approach behind this tool:
 
 * **`hython_node_scanner.py`**: An extraction of the node scanning logic, demonstrating how to use `hou` in Python to dynamically traverse the node tree and build a dependency list based on input connections.
+* **`ffmpeg_converter.py`**: Demonstrates the automated post-processing. It intelligently detects image sequence padding and auto-encodes heavy EXRs into lightweight MP4s and ProRes 4444 movies with accurate color-space profiles.
+* **`async_job_monitor.py`**: Shows the asynchronous polling loop that integrates closely with the GridMarkets API to parse job queues and track dependency completions in real-time.
 * **`config.toml.example`**: Demonstrates the data-driven configuration schema handling environment variables, paths, and API integrations.
 
 ---
-*Created by [Your Name] for Portfolio Demonstration.*
+*Created by Pau Rodriguez Dalmau for Portfolio Demonstration.*
