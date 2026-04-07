@@ -1,0 +1,32 @@
+# GridMarkets Pipeline Configuration (Example)
+# This file is used to configure mapping between Google Drive instances and Houdini rendering.
+
+[render]
+# The pattern used by the parsing engine to find the highest-versioned HIP file automatically
+hip_file_pattern = "logo.v{version}.hiplc"
+
+# Preferred final output format on the Farm
+output_format = "exr"
+
+# Pin the farm to a specific Houdini production environment 
+houdini_version = "21.0.512"
+
+# Assign render tasks to GPU (Karma XPU)
+renderer = "karma-xpu-gpu"
+
+[rop_discovery]
+# The contexts our headless hython script checks when looking for render targets
+search_paths = ["/out", "/stage"]
+
+# Only submit these types to the GridMarkets Farm
+rop_types = ["usdrender_rop", "fetch", "karma", "rop_image"]
+
+[composite]
+# Toggle whether we handle post-processing/compositing in Houdini COP or via external tools like FFmpeg
+use_houdini_cop = true
+cop_network_path = "/img/copnet1"
+
+[paths]
+# Relative paths based on the dynamically-detected Google Drive root
+hip_dir = "Marketing/projects/Assets/01_banner_splash_logo/03-Production/hip"
+render_subdir = "render"
