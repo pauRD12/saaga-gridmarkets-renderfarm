@@ -28,18 +28,18 @@ Using **`hython`** (Houdini's headless Python engine), the tool dynamically maps
 
 ```mermaid
 graph TD
-    subgraph 1. Headless Parsing (hython)
+    subgraph S1 ["1. Headless Parsing (hython)"]
     A[Terminal CLI<br/>'gridmarkets target'] --> B(Scan /out for OUT_ nodes)
     B --> C[Resolve Dependencies<br>Separate RND from COMP nodes]
     end
     
-    subgraph 2. GridMarkets Orchestration
+    subgraph S2 ["2. GridMarkets Orchestration"]
     C -->|API Submit via Envoy| D{Cloud GPU Farm}
     D -->|Parallel Renders| E[RND: Karma beauty, wipes, passes]
     E -->|On Success Trigger| F[COMP: Apply Alpha & Overlays]
     end
     
-    subgraph 3. Delivery
+    subgraph S3 ["3. Delivery"]
     F -->|WatchFile Daemon| G[Auto-Download to Google Drive]
     G --> H[FFmpeg: Auto-Convert EXR/PNG to MP4/ProRes]
     end
